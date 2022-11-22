@@ -1,7 +1,15 @@
-h1{
-    color:red;
-}
+@import "abstracts/_mixins.scss";
+@import "abstracts/_variables.scss";
 
-h2{
-    color:blue;
-}
+@import "partial/navbar.scss";
+@import "partial/header.scss";
+@import "partial/body.scss";
+@import "partial/footer.scss";
+
+@import 'global/boilerplate.scss';
+@import 'global/typography.scss';
+
+
+
+
+
