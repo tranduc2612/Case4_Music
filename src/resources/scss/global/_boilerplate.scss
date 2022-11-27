@@ -1,8 +1,13 @@
 // @forward '../abstracts//variables';
 
 html{
-    box-sizing:border-box;
-    font-size:100%;
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 *,*::after,*::before{
@@ -12,13 +17,39 @@ html{
 body{
     margin:0;
     padding:0;
-    font-family:Arial,sans-serif;
+    font-family: 'Inter', sans-serif;
+    background-color: $layout-bg;
+    overflow: hidden;
 }
 
 ul{
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 a{
     text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:hover::-webkit-scrollbar {
+    display: block;
+    width: 4px;
+}
+
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: transparent;
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #888;
 }

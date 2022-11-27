@@ -1,0 +1,204 @@
+.content__home{
+    &-music{
+        &-title{
+            color: $white-text;
+        }
+    
+        &-play{
+            
+        } 
+
+        &-slide{
+            width: 290px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-right: 20px;
+            justify-content: flex-end;
+
+            &-show{
+                width: 230px;
+                height: 244px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                transform-style: preserve-3d;
+                position: relative;
+            }
+
+            &-item{
+                width: 230px;
+                height: 230px;
+                position: absolute;
+                transition: all 0.9s;
+                backface-visibility: hidden;
+                will-change: transform, opacity;
+                transform: perspective(1px) translateZ(0);
+
+                &.first {
+                    opacity: 1;
+                    transform: translate3d(0 , 0, 80px) scale(1,1);
+                }
+                
+                &.second {
+                    opacity: 0.7;
+                    transform: translate3d($offset-x-second , 0, 60px) scale($scale-rate-second, $scale-rate-second);
+                }
+                
+                &.third {
+                    opacity: 0.9;
+                    transform: translate3d($offset-x-third , 0, 20px) scale($scale-rate-third, $scale-rate-third);
+                }
+                
+                &.fourth {
+                    opacity: 0.1;
+                    transform: translate3d($offset-x-third , 0, 0) scale($scale-rate-third, $scale-rate-third);
+                }
+            }
+
+            &-img{
+                width: 100%;
+                padding-top: 100%;
+                border-radius: 5px;
+            }
+        }
+
+        &-list{
+            height: 250px;
+            display: flex;
+            font-weight: 500;
+            font-size: 1.2rem;
+            flex-direction: column;
+            overflow: hidden overlay;
+            scroll-behavior: smooth;
+            justify-content: flex-start;
+            will-change: scroll-position;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            
+            &:hover::-webkit-scrollbar {
+                display: block;
+                width: 4px;
+            }
+            
+              
+              /* Track */
+            &::-webkit-scrollbar-track {
+                border-radius: 10px;
+                background: transparent;
+            }
+              
+              /* Handle */
+            &::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background: #888;
+            }
+              
+              /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+        }
+
+    }
+
+
+}
+
+.thumb--animate-img{
+    @include absCenter;
+}
+
+.btn--play-song{
+    @include absCenter;
+    & svg{
+        color:$white-text;
+    }
+}
+
+.playlist__info-img{
+    border-radius:5px;
+    margin-right: 20px;
+}
+
+.play-song--actions{
+    color: $white-text;
+    & svg{
+        @include absCenter;
+    }
+}
+
+.layout-fade{
+    border-radius:5px;
+}
+
+.playlist__info-body-title,.home__playlist-title{
+    font-size: 1.4rem;
+    color: $white-text;
+    cursor: pointer;
+}
+
+.playlist__info-body-author a{
+    font-size: 1.4rem;
+    color: $text-secondary;
+
+    &:hover{
+        color: $link-text-hover;
+    }
+}
+
+.content__home-music-item{
+    cursor: pointer;
+
+    &-time{
+        font-size: 1.4rem;
+        color: $white-text;
+        align-self: center;
+    }
+    
+}
+
+.playlist__option-icon{
+    color: $white-text;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color:transparent;
+    padding: 10px;
+    border-radius:50%;
+    cursor: pointer;
+    & svg{
+        @include absCenter; 
+    }
+
+    &:hover{
+        background-color:$background-active;
+    }
+}
+
+.playlist__option-heart-icon.liked{
+    color:$pink-deep;
+}
+
+.container__header-actions{
+    color:$white-text;
+}
+
+.container__move-btn{
+    cursor: pointer;
+    background-color:transparent;
+    padding: 7px;
+    border-radius:50%;
+    &:hover{
+        background-color:$background-active;
+    }
+}
+
+.home__playlist-create{
+    color:$white-text;
+
+
+}
+

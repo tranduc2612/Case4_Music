@@ -1,0 +1,54 @@
+.app{
+    overflow: hidden;
+    background-repeat: repeat;
+    height: 100vh;
+    background-size: 1920px auto;
+    will-change: scroll-position;
+    background-image: url("../img/themeBgs/theme1.svg");
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.content{
+    position: relative;
+    height: 100vh-$player-height;
+    top: 0;
+    left: 0;
+    right: 0;
+    scroll-behavior: smooth;
+    overflow: hidden overlay;
+    will-change: scroll-position;
+    overflow-anchor: none !important;
+    scroll-snap-stop: normal !important;
+    scroll-behavior: unset !important;
+    overscroll-behavior: unset !important;
+
+    &__navbar{
+        margin:0 auto;
+        &-menu{
+            background-color: $white-light;
+            font-size:1.6rem;
+            border-radius:20px;
+            padding:4px 4px;
+        }
+
+        &-item{
+            text-align:center;
+            position: relative;
+            padding: 2.5px 10px;
+            cursor:pointer;
+            color:white;
+            border-radius:20px;
+            width: 110px;
+            font-weight: 200;
+        }
+
+        &-item.active{
+            background-color: $tab-active-color;
+            color: #fff;
+        }
+    }
+}
+
+// custom slider
+

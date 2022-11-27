@@ -1,10 +1,12 @@
 @import "abstracts/_mixins.scss";
 @import "abstracts/_variables.scss";
 
-@import "partial/navbar.scss";
+@import "partial/sidebar.scss";
 @import "partial/header.scss";
+@import "partial/info.scss";
 @import "partial/body.scss";
-@import "partial/footer.scss";
+@import "partial/player.scss";
+@import "partial/home.scss";
 
 @import 'global/boilerplate.scss';
 @import 'global/typography.scss';

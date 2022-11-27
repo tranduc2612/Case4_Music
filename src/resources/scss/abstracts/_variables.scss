@@ -1,3 +1,32 @@
 // COLORS
 
-$color-primary: blue;
+
+//primary-color
+$color-primary: #7200a1;
+$white-light:#ffffff1a;
+$tab-active-color:rgba(255, 255, 255, 0.3);
+$text-secondary: rgba(255, 255, 255, 0.5);
+$link-text-hover: #c662ef;
+$pink-deep: #ed2b91;
+
+//background-color
+$layout-bg:#170f23;
+$background-active: rgba(255, 255, 255, 0.1);
+$sidebar-bg:rgba(255, 255, 255, 0.05);
+$primary-bg:#432275;
+
+
+//text-color
+$white-text:#fff;
+$black-text:#000;
+
+//HEIGHT
+
+$player-height:10vh;
+
+
+//ANIMATION
+$scale-rate-second: 196px / 230px;
+$scale-rate-third: 162px / 230px;
+$offset-x-second: 0px - ((230px - (230px * $scale-rate-second)) / 2 + 20px);
+$offset-x-third: 0px - ((230px - (230px * $scale-rate-third)) / 2 + 40px);

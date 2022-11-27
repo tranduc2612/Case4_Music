@@ -1,0 +1,68 @@
+.header{
+
+
+    &__with-search{
+
+    }
+
+    &__button{
+        color:$white-text;
+        padding: 0;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+
+        & svg{
+            font-size:1.6rem;
+        }
+    }
+
+    &__search{
+        background-color: $white-light;
+        width: 520px;
+        height: 40px;
+        z-index: 300;
+        max-width: 540px;
+        border-radius: 20px;
+        color: $white-text;
+        border: 1px solid transparent;
+        padding-left: 10px;
+
+        &-input{
+            top: 0;
+            flex: 1;
+            order: 2;
+            border: none;
+            z-index: 400;
+            height: 38px;
+            outline: none;
+            overflow: hidden;
+            line-height: 4rem;
+            font-size: 1.4rem;
+            padding: 0 9px 0 20px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            background: transparent;
+            width: 100%;
+            color: $white-text;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+            &:focus .header__search-btn{
+                background-color: $primary-bg;
+            }
+        }
+    }
+
+    &__nav{
+        &-btn{
+            @include btn_circle_bgWhite;
+            position:relative;
+            &-icon{
+                color:$white-text;
+                @include absCenter;
+            }
+        }
+    }
+}
