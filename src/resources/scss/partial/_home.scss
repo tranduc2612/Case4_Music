@@ -198,7 +198,78 @@
 
 .home__playlist-create{
     color:$white-text;
-
-
+    width:100%;
+    height:100%;
+    border-radius:10px;
+    background: linear-gradient(33deg, #5a1eae -7%, #ce267a 117%);
 }
 
+.home__playlist-item{
+    border-radius:10px;
+    background:transparent;
+}
+
+.home__playlist-name{
+    color:$white-text;
+
+    &:hover{
+        color:$link-text-hover;
+    }
+}
+
+.home__playlist-img{
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius:10px;
+
+    &:hover .playlist__img{
+        transform: scale(1.12, 1.12);
+    }
+
+    &:hover .home__playlist-img-overlay{
+        display: flex;
+    }
+}
+
+
+.home__playlist-subname{
+    font-size:1.3rem;
+    color:$tab-active-color;
+}
+
+.playlist__img{
+    width: 100%;
+    height: 220px;
+    will-change: transform;
+    transition: transform 0.7s;
+    backface-visibility: hidden;
+    transform: perspective(1px) translateZ(0);
+}
+
+.home__playlist-img-overlay{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0,0, 0.4);
+    // background:red;
+    color: $white-text;
+    display: none;
+}
+
+.home__playlist-img-btn-icon.sub__icon{
+    color: $white-text;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color:transparent;
+    padding: 10px;
+    border-radius:50%;
+    cursor: pointer;
+    & svg{
+        @include absCenter; 
+    }
+
+    &:hover{
+        background-color:$background-active;
+    }
+}

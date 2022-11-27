@@ -84,7 +84,7 @@
   .sidebar__link {
     padding-left: 0; }
   .sidebar__subnav {
-    height: 300px;
+    height: 100vh;
     width: 100%;
     margin: 10px 0 0;
     overflow: hidden overlay;
@@ -189,7 +189,9 @@
   .sidebar__create {
     color: #fff;
     cursor: pointer;
-    padding: 10px; }
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 
 .header__button {
   color: #fff;
@@ -300,6 +302,25 @@
     .content__navbar-item.active {
       background-color: rgba(255, 255, 255, 0.3);
       color: #fff; }
+
+.swiper-button-disabled svg {
+  opacity: .35;
+  cursor: auto;
+  pointer-events: none; }
+
+.swiper {
+  width: 100%;
+  height: 100%; }
+
+.swiper-slide {
+  height: 300px;
+  cursor: pointer; }
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; }
 
 .player__music {
   height: 10vh;
@@ -463,7 +484,66 @@
     background-color: rgba(255, 255, 255, 0.1); }
 
 .home__playlist-create {
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(33deg, #5a1eae -7%, #ce267a 117%); }
+
+.home__playlist-item {
+  border-radius: 10px;
+  background: transparent; }
+
+.home__playlist-name {
   color: #fff; }
+  .home__playlist-name:hover {
+    color: #c662ef; }
+
+.home__playlist-img {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px; }
+  .home__playlist-img:hover .playlist__img {
+    transform: scale(1.12, 1.12); }
+  .home__playlist-img:hover .home__playlist-img-overlay {
+    display: flex; }
+
+.home__playlist-subname {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.3); }
+
+.playlist__img {
+  width: 100%;
+  height: 220px;
+  will-change: transform;
+  transition: transform 0.7s;
+  backface-visibility: hidden;
+  transform: perspective(1px) translateZ(0); }
+
+.home__playlist-img-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  display: none; }
+
+.home__playlist-img-btn-icon.sub__icon {
+  color: #fff;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer; }
+  .home__playlist-img-btn-icon.sub__icon svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .home__playlist-img-btn-icon.sub__icon:hover {
+    background-color: rgba(255, 255, 255, 0.1); }
 
 html {
   font-size: 62.5%;

@@ -50,5 +50,28 @@
     }
 }
 
+
 // custom slider
 
+.swiper-button-disabled svg{
+    opacity: .35;
+    cursor: auto;
+    pointer-events: none;
+}
+
+    .swiper {
+    width: 100%;
+    height: 100%;
+    }
+
+    .swiper-slide {
+    height: 300px;
+    cursor: pointer;
+    }
+
+    .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
