@@ -332,8 +332,7 @@
   background-position: 50%;
   background-repeat: repeat-x;
   background-size: 1920px auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: red; }
+  border-top: 1px solid rgba(255, 255, 255, 0.1); }
 
 .content__home-music-title {
   color: #fff; }
@@ -419,7 +418,7 @@
   .btn--play-song svg {
     color: #fff; }
 
-.playlist__info-img {
+.musiclist__info-img {
   border-radius: 5px;
   margin-right: 20px; }
 
@@ -434,15 +433,15 @@
 .layout-fade {
   border-radius: 5px; }
 
-.playlist__info-body-title, .home__playlist-title {
+.musiclist__info-body-title, .home__slider-title {
   font-size: 1.4rem;
   color: #fff;
   cursor: pointer; }
 
-.playlist__info-body-author a {
+.musiclist__info-body-author a {
   font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.5); }
-  .playlist__info-body-author a:hover {
+  .musiclist__info-body-author a:hover {
     color: #c662ef; }
 
 .content__home-music-item {
@@ -452,7 +451,7 @@
     color: #fff;
     align-self: center; }
 
-.playlist__option-icon {
+.musiclist__option-icon {
   color: #fff;
   position: relative;
   width: 60px;
@@ -461,15 +460,15 @@
   padding: 10px;
   border-radius: 50%;
   cursor: pointer; }
-  .playlist__option-icon svg {
+  .musiclist__option-icon svg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); }
-  .playlist__option-icon:hover {
+  .musiclist__option-icon:hover {
     background-color: rgba(255, 255, 255, 0.1); }
 
-.playlist__option-heart-icon.liked {
+.musiclist__option-heart-icon.liked {
   color: #ed2b91; }
 
 .container__header-actions {
@@ -490,30 +489,30 @@
   border-radius: 10px;
   background: linear-gradient(33deg, #5a1eae -7%, #ce267a 117%); }
 
-.home__playlist-item {
+.home__slider-item {
   border-radius: 10px;
   background: transparent; }
 
-.home__playlist-name {
+.home__slider-name {
   color: #fff; }
-  .home__playlist-name:hover {
+  .home__slider-name:hover {
     color: #c662ef; }
 
-.home__playlist-img {
+.home__slider-img {
   width: 100%;
   position: relative;
   overflow: hidden;
   border-radius: 10px; }
-  .home__playlist-img:hover .playlist__img {
+  .home__slider-img:hover .slider__img {
     transform: scale(1.12, 1.12); }
-  .home__playlist-img:hover .home__playlist-img-overlay {
+  .home__slider-img:hover .home__slider-img-overlay {
     display: flex; }
 
-.home__playlist-subname {
+.home__slider-subname {
   font-size: 1.3rem;
   color: rgba(255, 255, 255, 0.3); }
 
-.playlist__img {
+.slider__img {
   width: 100%;
   height: 220px;
   will-change: transform;
@@ -521,14 +520,14 @@
   backface-visibility: hidden;
   transform: perspective(1px) translateZ(0); }
 
-.home__playlist-img-overlay {
+.home__slider-img-overlay {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
   display: none; }
 
-.home__playlist-img-btn-icon.sub__icon {
+.home__slider-img-btn-icon.sub__icon {
   color: #fff;
   position: relative;
   width: 20px;
@@ -537,13 +536,181 @@
   padding: 10px;
   border-radius: 50%;
   cursor: pointer; }
-  .home__playlist-img-btn-icon.sub__icon svg {
+  .home__slider-img-btn-icon.sub__icon svg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); }
-  .home__playlist-img-btn-icon.sub__icon:hover {
+  .home__slider-img-btn-icon.sub__icon:hover {
     background-color: rgba(255, 255, 255, 0.1); }
+
+.radius__img {
+  width: 100%;
+  height: 220px;
+  border-radius: 50%; }
+
+.singer:hover {
+  color: #ed2b91; }
+
+.button-follow {
+  padding: 3px 6px;
+  border-radius: 20px;
+  width: 60%;
+  color: #fff;
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  background-color: #ed2b91;
+  transition: all 0.2s linear; }
+  .button-follow:hover {
+    background-color: #FF87CA; }
+
+.app__authetication {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 1000; }
+
+.wrapper__closebtn {
+  right: 10px;
+  top: 10px; }
+
+.close-button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  overflow: hidden; }
+  .close-button > div {
+    position: relative; }
+  .close-button-block {
+    width: 40px;
+    height: 20px;
+    position: relative;
+    overflow: hidden; }
+    .close-button-block:before, .close-button-block:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: calc(55% - 4px);
+      display: block;
+      width: 4px;
+      height: 25px;
+      transform-origin: bottom center;
+      background: white;
+      transition: all ease-out 280ms; }
+    .close-button-block:last-of-type {
+      transform: rotate(180deg); }
+  .close-button .in .close-button-block:before {
+    transition-delay: 280ms;
+    transform: translateX(20px) translateY(-20px) rotate(45deg); }
+  .close-button .in .close-button-block:after {
+    transition-delay: 280ms;
+    transform: translateX(-22px) translateY(-22px) rotate(-45deg); }
+  .close-button .out {
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .close-button .out .close-button-block:before {
+      transform: translateX(-5px) translateY(5px) rotate(45deg); }
+    .close-button .out .close-button-block:after {
+      transform: translateX(5px) translateY(5px) rotate(-45deg); }
+  .close-button:hover .in .close-button-block:before {
+    transform: translateX(-5px) translateY(5px) rotate(45deg); }
+  .close-button:hover .in .close-button-block:after {
+    transform: translateX(5px) translateY(5px) rotate(-45deg); }
+  .close-button:hover .out .close-button-block:before {
+    transform: translateX(-20px) translateY(20px) rotate(45deg); }
+  .close-button:hover .out .close-button-block:after {
+    transform: translateX(20px) translateY(20px) rotate(-45deg); }
+
+.app__auth {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  border-radius: 10px;
+  width: 40vw;
+  height: 90vh;
+  background-color: #7200a1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: rgba(248, 90, 245, 0.2) 0px 7px 29px 0px; }
+  .app__auth-logo-small {
+    transform: rotate(0deg);
+    animation: rotate 5s linear infinite; }
+
+.app__auth-title span {
+  font-size: 4rem;
+  color: #fff;
+  font-weight: 700; }
+
+.app__auth-input {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  font-size: 1.6rem;
+  transition: all 0.2s linear; }
+  .app__auth-input:focus {
+    outline: 1px solid #e3c7ee;
+    background-color: #d8bae7;
+    border: 1px solid #e3c7ee; }
+
+.app__auth-phone label {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fff; }
+
+.app__auth-password label {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fff; }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield; }
+
+.app__auth-remember-label {
+  margin-left: 10px;
+  font-size: 1.6rem;
+  color: #fff; }
+
+.app__auth-remember-input {
+  width: 20px;
+  height: 20px; }
+
+.app__auth-btn {
+  padding: 3px 6px;
+  border-radius: 20px;
+  width: 60%;
+  color: #fff;
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  width: 40%;
+  padding: 10px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  background-color: #c662ef;
+  transition: all 0.2s ease-in-out; }
+  .app__auth-btn:hover {
+    background-color: #ed2b91; }
+
+.app__auth-direction {
+  font-size: 1.6rem; }
+  .app__auth-direction span {
+    color: #fff; }
+  .app__auth-direction a:hover {
+    color: #ed2b91; }
 
 html {
   font-size: 62.5%;
@@ -600,3 +767,9 @@ p {
 
 a, a:visited, a:active {
   text-decoration: none; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }

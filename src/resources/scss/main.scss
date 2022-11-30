@@ -1,15 +1,23 @@
+
+// valuation
 @import "abstracts/_mixins.scss";
 @import "abstracts/_variables.scss";
 
+// partials
 @import "partial/sidebar.scss";
 @import "partial/header.scss";
 @import "partial/info.scss";
 @import "partial/body.scss";
 @import "partial/player.scss";
 @import "partial/home.scss";
+@import "partial/zingchart.scss";
+@import "partial/authetication.scss";
 
+// config
 @import 'global/boilerplate.scss';
 @import 'global/typography.scss';
+@import 'global/animation.scss';
+
 
 
 

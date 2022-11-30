@@ -1,0 +1,206 @@
+.app__authetication{
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+// button close form
+$button-size: 40px;
+$close-width: ($button-size / 10);
+.wrapper__closebtn {
+    right: 10px;
+    top: 10px;
+}
+
+.close-button {
+  display: block;
+  width: $button-size;
+  height: $button-size;
+  position: relative;
+  overflow: hidden;
+  > div {
+    position: relative;
+  }
+  &-block {
+    width: 40px;
+    height: 20px;
+    position: relative;
+    overflow: hidden;
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: calc(55% - 4px);
+      display: block;
+      width: 4px;
+      height: 25px;
+      transform-origin: bottom center;
+      background: white;
+      transition: all ease-out 280ms;
+    }
+    &:last-of-type {
+      transform: rotate(180deg);
+    }
+  }
+  .in {
+    .close-button-block {
+      &:before {
+        transition-delay: 280ms;
+        transform: translateX(20px) translateY(-20px) rotate(45deg);
+      }
+      &:after {
+        transition-delay: 280ms;
+        transform: translateX(-22px) translateY(-22px) rotate(-45deg);
+      }
+    }
+  }
+  .out {
+    position: absolute;
+    top: 0;
+    left: 0;
+    .close-button-block {
+      &:before {
+        transform: translateX(-5px) translateY(5px) rotate(45deg);
+      }
+      &:after {
+        transform: translateX(5px) translateY(5px) rotate(-45deg);
+      }
+    }
+  }
+  &:hover {
+    .in {
+      .close-button-block {
+        &:before {
+          transform: translateX(-5px) translateY(5px) rotate(45deg);
+        }
+        &:after {
+          transform: translateX(5px) translateY(5px) rotate(-45deg);
+        }
+      }
+    }
+    .out {
+      .close-button-block {
+        &:before {
+          transform: translateX(-20px) translateY(20px) rotate(45deg);
+        }
+        &:after {
+          transform: translateX(20px) translateY(20px) rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+
+.app__auth{
+    @include form_default;
+    background-color:$color-primary;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: rgba(248, 90, 245, 0.2) 0px 7px 29px 0px;
+
+    &-logo{
+
+
+        &-small{
+            transform:rotate(0deg);
+            animation: rotate 5s linear infinite;
+        }
+
+        &-main{
+
+        }
+
+    }
+}
+
+.app__auth-title span{
+    font-size: 4rem;
+    color:$white-text;
+    font-weight: 700;
+}
+
+.app__auth-input{
+    @include input_default;
+    transition: all 0.2s linear;
+    &:focus{
+        outline:1px solid #e3c7ee;
+        background-color: #d8bae7;
+        border:1px solid #e3c7ee;
+    }
+    
+
+}
+
+.app__auth-phone{
+    & label{
+        font-size:2rem;
+        font-weight: 500;
+        color:$white-text;
+    }
+}
+
+.app__auth-password{
+    & label{
+        font-size:2rem;
+        font-weight: 500;
+        color:$white-text;
+    }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.app__auth-remember{
+
+
+    &-label{
+        margin-left: 10px;
+        font-size: 1.6rem;
+        color:$white-text;
+    }
+
+    &-input{
+        width:20px;
+        height:20px;
+    }
+}
+
+.app__auth-btn{
+    @include btn_default;
+    width: 40%;
+    padding:10px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    background-color: $link-text-hover;
+    transition: all 0.2s ease-in-out;
+
+    &:hover{
+        background-color: $pink-deep;
+    }
+    
+}
+
+.app__auth-direction{
+  font-size: 1.6rem;
+  
+  & span{
+    color: $white-text;
+  }
+
+  & a:hover{
+    color: $pink-deep;
+  }
+}
