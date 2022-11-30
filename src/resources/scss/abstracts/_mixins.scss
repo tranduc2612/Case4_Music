@@ -34,3 +34,29 @@
     border-radius: 50%;
     background: $background-active;
 }
+
+@mixin btn_default{
+    padding:3px 6px;
+    border-radius: 20px;
+    width:60%;
+    color: $white-text;
+    font-size: 1.3rem;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+@mixin form_default{
+    @include absCenter;
+    background-color:red;
+    border-radius: 10px;
+    width: 40vw;
+    height: 90vh;
+}
+
+@mixin input_default{
+    padding:10px;
+    width: 100%;
+    border-radius:5px;
+    border:1px solid transparent;
+    font-size: 1.6rem;
+}
