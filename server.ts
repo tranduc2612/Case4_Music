@@ -24,8 +24,8 @@ app.use(methodOverride('_method'));
 
 mongoose.connect(connectStr).then(() => {
     console.log('Connection Success');
-}).catch((err) => {
-    console.log(err.message);
+}).catch(() => {
+    console.log('Connection failed');
 })
 
 app.use('',router)
