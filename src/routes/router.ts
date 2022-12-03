@@ -4,9 +4,11 @@ import songRouter from "./song-router";
 import singerRouter from "./singer-router";
 import albumRouter from "./album-router";
 import songDetailRouter from "./songDetail-router";
+import {accountRouter} from "./account-router";
 
 export const router = Router();
-router.use('/list-song',songRouter);
-router.use('/list-singer',singerRouter)
-router.use('/list-album',albumRouter)
-router.use('/list-song-detail',songDetailRouter)
+router.use('/list-songs',songRouter);
+router.use('/list-singers',singerRouter)
+router.use('/list-albums',albumRouter)
+router.use('/list-songs-detail',songDetailRouter)
+router.use('/list-accounts',accountRouter);
