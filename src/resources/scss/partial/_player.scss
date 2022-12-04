@@ -24,6 +24,7 @@
 .player__music-author{
     position: absolute;
     bottom: 0;
+    width: 237px;
     & a{
         font-size:1.2rem;
         color:$text-secondary;
@@ -50,7 +51,7 @@
     width: 100%;
     opacity: 1;
     z-index: 5;
-    height: 18px;
+    height: 20px;
     outline: none;
     cursor: pointer;
     border-radius: 2px;
@@ -67,11 +68,11 @@
 .progress::-webkit-slider-thumb {
     appearance: none;
     width: 1px;
-    height: 18px;
+    height: 20px;
     cursor: pointer;
     border-radius: 999px;
     -webkit-appearance: none;
-    background-color: red;
+    background-color: transparent;
 }
 
 .player__music-middle{

@@ -158,6 +158,10 @@
         color: $white-text;
         align-self: center;
     }
+
+    &.active{
+        background-color:$background-active;
+    }
     
 }
 
@@ -296,4 +300,12 @@
         background-color:#FF87CA;
 
     }
+}
+
+.btn-repeat.active .repeat-icon{
+    color: $link-text-hover;
+}
+
+.btn-repeat.active{
+    border-color: transparent;
 }
