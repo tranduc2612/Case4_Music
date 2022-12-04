@@ -1,12 +1,11 @@
 import {Request, Response, Router} from 'express';
-
+import {accountRouter} from "./account-router";
 import songRouter from "./song-router";
 import singerRouter from "./singer-router";
 import albumRouter from "./album-router";
 import songDetailRouter from "./songDetail-router";
 import songDemo from "./demosong-router"
 
-import {accountRouter} from "./account-router";
 
 export const router = Router();
 router.use('/list-song',songRouter);

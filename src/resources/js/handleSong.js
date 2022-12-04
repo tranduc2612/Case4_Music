@@ -1,5 +1,6 @@
 let currentSong;
 let isPlay = false;
+let isRepeat = false;
 
 function getListSong() {
 	return $.ajax({
@@ -9,7 +10,6 @@ function getListSong() {
 			"Content-Type": "application/json",
 		},
 		success: (songList) => {
-			console.log(songList);
 			let html = "";
 			songList.forEach((song) => {
 				let authors = "";
@@ -21,8 +21,8 @@ function getListSong() {
 					}
 				});
 				html += `
-                <li class="content__home-music-item d-flex justify-content-between position-relative" pathSong="${song.path}">
-                                                            <div class="content__home-music-item-info d-flex">
+                <li class="content__home-music-item d-flex justify-content-between position-relative align-items-center" pathSong="${song.path}">
+                                                            <div class="content__home-music-item-info d-flex ms-2">
                                                                 <div class="musiclist__info-img position-relative"
                                                                     style="
                                                                         background: url('${song.image}')
@@ -33,7 +33,7 @@ function getListSong() {
                                                                 >
                                                                     <div class="thumb--animate">
                                                                         <div
-                                                                            class="layout-fade position-absolute"
+                                                                            class="layout-fade position-absolute d-none"
                                                                             style="
                                                                                 background: rgba(0, 0, 0, 0.5);
                                                                                 width: 100%;
@@ -41,7 +41,7 @@ function getListSong() {
                                                                             "
                                                                         ></div>
                                                                         <div
-                                                                            class="thumb--animate-img position-absolute"
+                                                                            class="thumb--animate-img position-absolute d-none"
                                                                             style="
                                                                                 background: url('../../public/img/SongActiveAnimation/icon-playing.gif')
                                                                                     no-repeat 50% / contain;
@@ -150,21 +150,47 @@ function handleSong(dataSong) {
 	const listSong = $$(".content__home-music-item");
 	const playIcon = $(".icon-play");
 	const pauseIcon = $(".icon-pause");
+	const fadeImgSong = $$(".layout-fade");
+	const thumbAnimation = $$(".thumb--animate-img");
+	const playSongIcon = $$(".play-song--actions");
+	const process = $(".progress");
+	const processCursor = $(".progress__track-update");
+	const trackTime = $(".tracktime");
+	const durationTime = $(".durationtime");
 
 	// select song
-	for (let i = 0; i < listSong.length - 1; i++) {
+	for (let i = 0; i < listSong.length; i++) {
 		listSong[i].addEventListener("click", () => {
-			const thumbCD = $(".cd-thumb");
-			const titlePlayer = $(".player__music-title");
-			thumbCD.style.backgroundImage = `url(${dataSong[i].image})`;
-			titlePlayer.innerHTML = dataSong[i].name;
-			currentSong = i;
-			audio.src = dataSong[i].path;
-			playIcon.classList.add("d-none");
-			pauseIcon.classList.remove("d-none");
-			isPlay = true;
-			audio.play();
+			playSong(i);
 		});
+	}
+
+	function playSong(i) {
+		if (currentSong != undefined) {
+			listSong[currentSong].classList.remove("active");
+			fadeImgSong[currentSong].classList.add("d-none");
+			thumbAnimation[currentSong].classList.add("d-none");
+			playSongIcon[currentSong].classList.remove("d-none");
+		}
+		listSong[i].classList.add("active");
+		fadeImgSong[i].classList.remove("d-none");
+		thumbAnimation[i].classList.remove("d-none");
+		playSongIcon[i].classList.add("d-none");
+
+		const thumbCD = $(".cd-thumb");
+		const titlePlayer = $(".player__music-title");
+		const authorPlayer = $(".player__music-author");
+		const authorPlayList = $$(".musiclist__info-body-author");
+		thumbCD.style.backgroundImage = `url(${dataSong[i].image})`;
+		titlePlayer.innerHTML = dataSong[i].name;
+		authorPlayer.innerHTML = authorPlayList[i].innerHTML;
+
+		currentSong = i;
+		audio.src = dataSong[i].path;
+		playIcon.classList.add("d-none");
+		pauseIcon.classList.remove("d-none");
+		isPlay = true;
+		audio.play();
 	}
 	// pauseSong
 	pauseIcon.addEventListener("click", () => {
@@ -180,5 +206,86 @@ function handleSong(dataSong) {
 		audio.play();
 	});
 
+	// next song
+	const btnNextSong = $(".btn-next");
+	btnNextSong.addEventListener("click", () => {
+		const indexNextSong = currentSong + 1;
+		if (indexNextSong >= dataSong.length) {
+			return;
+		}
+		playSong(indexNextSong);
+	});
+
+	// prev song
+	const btnPrevSong = $(".btn-prev");
+	btnPrevSong.addEventListener("click", () => {
+		const indexPrevSong = currentSong - 1;
+		if (indexPrevSong < 0) {
+			return;
+		}
+		playSong(indexPrevSong);
+	});
+
+	//repeat song
+
+	const btnRepeatSong = $(".btn-repeat");
+	btnRepeatSong.addEventListener("click", () => {
+		btnRepeatSong.classList.toggle("active");
+		if (btnRepeatSong.classList.contains("active")) {
+			isRepeat = true;
+		} else {
+			isRepeat = false;
+		}
+	});
+
+	audio.onended = function () {
+		if (isRepeat) {
+			audio.play();
+		} else {
+			btnNextSong.click();
+		}
+	};
+
 	//process
+
+	audio.ontimeupdate = function () {
+		if (audio.duration) {
+			const processPercent = Math.floor(
+				(audio.currentTime / audio.duration) * 100
+			);
+			let minutesCur = Math.floor(audio.currentTime / 60);
+			let secondsCur = Math.floor(audio.currentTime - minutesCur * 60);
+
+			let minutesEnd = Math.floor(audio.duration / 60);
+			let secondsEnd = Math.floor(audio.duration - minutesEnd * 60);
+
+			if (secondsEnd < 10) {
+				secondsEnd = "0" + secondsEnd;
+			}
+			if (minutesEnd < 10) {
+				minutesEnd = "0" + minutesEnd;
+			}
+
+			if (secondsCur < 10) {
+				secondsCur = "0" + secondsCur;
+			}
+			if (minutesCur < 10) {
+				minutesCur = "0" + minutesCur;
+			}
+
+			const timeEnd = `${minutesEnd}:${secondsEnd}`;
+			const timeCur = `${minutesCur}:${secondsCur}`;
+			durationTime.innerHTML = timeEnd;
+			trackTime.innerHTML = timeCur;
+			process.value = processPercent;
+			processCursor.style.width = processPercent + "%";
+		}
+	};
+
+	// rewind music
+	process.onchange = function (e) {
+		console.log("hello");
+		const seekTime = (audio.duration / 100) * e.target.value;
+		audio.currentTime = seekTime;
+	};
 }
