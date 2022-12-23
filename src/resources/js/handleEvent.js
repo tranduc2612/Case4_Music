@@ -1,7 +1,8 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+// const $ = document.querySelector.bind(document);
+// const $$ = document.querySelectorAll.bind(document);
+// console.log($);
 
-const closeBtn = $$("#close__btn-auth");
+const closeBtn = $(".wrapper__closebtn");
 const formAuth = $(".app__authetication");
 const avatarUser = $("#header-avatar");
 const formLogin = $(".login__form");
@@ -9,28 +10,37 @@ const formRegister = $(".register__form");
 const btnWitchLogin = $(".btn__witch-Login");
 const btnWitchRegister = $(".btn__witch-Register");
 
-closeBtn.forEach((e) => {
-	e.addEventListener("click", (e) => {
-		formAuth.classList.add("d-none");
-		formLogin.classList.remove("d-none");
-		formRegister.classList.add("d-none");
-	});
+// closeBtn.forEach((e) => {
+// 	e.addEventListener("click", (e) => {});
+// });
+
+closeBtn.click(() => {
+	formAuth.addClass("d-none");
+	formLogin.removeClass("d-none");
+	formRegister.addClass("d-none");
 });
 
-avatarUser.addEventListener("click", (e) => {
-	formAuth.classList.remove("d-none");
+// avatarUser.addEventListener("click", (e) => {
+// });
+
+avatarUser.click(() => {
+	formAuth.removeClass("d-none");
 });
 
-btnWitchLogin.addEventListener("click", (e) => {
+// btnWitchLogin.addEventListener("click", (e) => {});
+
+btnWitchLogin.click((e) => {
 	e.preventDefault();
-	formLogin.classList.toggle("d-none");
-	formRegister.classList.toggle("d-none");
+	formLogin.toggleClass("d-none");
+	formRegister.toggleClass("d-none");
 });
 
-btnWitchRegister.addEventListener("click", (e) => {
+// btnWitchRegister.addEventListener("click", (e) => {});
+
+btnWitchRegister.click((e) => {
 	e.preventDefault();
-	formRegister.classList.toggle("d-none");
-	formLogin.classList.toggle("d-none");
+	formRegister.toggleClass("d-none");
+	formLogin.toggleClass("d-none");
 });
 
 // slide
