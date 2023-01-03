@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import {SECRET_KEY} from "../middleware/auth-middleware";
 
 
-export let ID_USER : any;
 class AccountService{
     addAccount = async (account : any) =>{
         account.password = await bcrypt.hash(account.password,10);
@@ -12,27 +11,46 @@ class AccountService{
     }
 
     getToken = async (account : any) =>{
-        const accountFind = await User.findOne({name: account.name});
+        const accountFind = await User.findOne({phone: account.phone});
+        
         if(!accountFind){
-            return 'Failed';
+            return {
+                type:"wrong-phone",
+                isAccess: false,
+                message: "Số điện thoại không tồn tại !"
+            };
         }
         else{
             const comparePassword = await bcrypt.compare(account.password, accountFind.password);
             if(!comparePassword){
-                return 'Password is wrong';
+                return {
+                    type:"wrong-password",
+                    isAccess: false,
+                    message: "Sai mật khẩu !"
+                };
             }
             else{
                 const payload = {
-                    name : accountFind.name,
-                    idUser: accountFind._id
+                    idUser: accountFind._id,
+                    nameUser: accountFind.name,
+                    avatarUser: accountFind.name,
+                    phoneUser:accountFind.phone
                 }
-                ID_USER = accountFind._id;
-                return await jwt.sign(payload, SECRET_KEY, {
+
+                const token = await jwt.sign(payload, SECRET_KEY, {
                     expiresIn: 36000
-                });
+                })
+
+                return {
+                    isAccess: true,
+                    idUser: accountFind._id,
+                    message:"Đăng nhập thành công !",
+                    token
+                };
             }
         }
     }
+    
     findUser = async (id : any) =>{
         let user = await User.findOne({_id: id});
         return user;

@@ -66,3 +66,8 @@
         }
     }
 }
+
+.avatar__navbar{
+    border-radius: 50%;
+    @include absCenter;
+}

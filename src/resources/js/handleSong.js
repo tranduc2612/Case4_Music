@@ -1,17 +1,19 @@
 let currentSong;
 let isPlay = false;
 let isRepeat = false;
-
 function getListSong() {
 	return $.ajax({
 		type: "GET",
-		url: "http://localhost:3000/song-demo",
+		url: `${URL_BASE}/list-songs/song`,
 		headers: {
 			"Content-Type": "application/json",
+			Authorization:
+				"Bearer " + JSON.parse(localStorage.getItem("ACCESS_TOKEN")),
 		},
 		success: (songList) => {
+			console.log(songList);
 			let html = "";
-			songList.forEach((song) => {
+			songList.forEach((song, index) => {
 				let authors = "";
 				song.singer.forEach((author, index) => {
 					if (song.singer.length - 1 == index) {
@@ -21,7 +23,7 @@ function getListSong() {
 					}
 				});
 				html += `
-                <li class="content__home-music-item d-flex justify-content-between position-relative align-items-center" pathSong="${song.path}">
+                <li class="content__home-music-item d-flex justify-content-between position-relative align-items-center" pathSong="${song.path}" id=${index}>
                                                             <div class="content__home-music-item-info d-flex ms-2">
                                                                 <div class="musiclist__info-img position-relative"
                                                                     style="
@@ -134,7 +136,7 @@ function getListSong() {
                                                         </li>
                 `;
 			});
-			$(".content__home-music-list").innerHTML = html;
+			$(".content__home-music-list").html(html);
 		},
 	});
 }
@@ -146,24 +148,23 @@ getListSong()
 	.catch((err) => {});
 
 function handleSong(dataSong) {
-	const audio = $("#audio");
-	const listSong = $$(".content__home-music-item");
+	const audio = document.querySelector("#audio");
+	const listSong = $(".content__home-music-item");
 	const playIcon = $(".icon-play");
 	const pauseIcon = $(".icon-pause");
-	const fadeImgSong = $$(".layout-fade");
-	const thumbAnimation = $$(".thumb--animate-img");
-	const playSongIcon = $$(".play-song--actions");
+	const fadeImgSong = $(".layout-fade");
+	const thumbAnimation = $(".thumb--animate-img");
+	const playSongIcon = $(".play-song--actions");
 	const process = $(".progress");
 	const processCursor = $(".progress__track-update");
 	const trackTime = $(".tracktime");
 	const durationTime = $(".durationtime");
 
 	// select song
-	for (let i = 0; i < listSong.length; i++) {
-		listSong[i].addEventListener("click", () => {
-			playSong(i);
-		});
-	}
+	listSong.click((e) => {
+		const indexCurrentSong = e.currentTarget.attributes.id.value;
+		playSong(indexCurrentSong);
+	});
 
 	function playSong(i) {
 		if (currentSong != undefined) {
@@ -180,35 +181,35 @@ function handleSong(dataSong) {
 		const thumbCD = $(".cd-thumb");
 		const titlePlayer = $(".player__music-title");
 		const authorPlayer = $(".player__music-author");
-		const authorPlayList = $$(".musiclist__info-body-author");
-		thumbCD.style.backgroundImage = `url(${dataSong[i].image})`;
-		titlePlayer.innerHTML = dataSong[i].name;
-		authorPlayer.innerHTML = authorPlayList[i].innerHTML;
+		const authorPlayList = $(".musiclist__info-body-author");
+		thumbCD.css("background-image", `url(${dataSong[i].image})`);
+		titlePlayer.html(dataSong[i].name);
+		authorPlayer.html(authorPlayList[i].innerHTML);
 
 		currentSong = i;
 		audio.src = dataSong[i].path;
-		playIcon.classList.add("d-none");
-		pauseIcon.classList.remove("d-none");
+		playIcon.addClass("d-none");
+		pauseIcon.removeClass("d-none");
 		isPlay = true;
 		audio.play();
 	}
 	// pauseSong
-	pauseIcon.addEventListener("click", () => {
-		playIcon.classList.remove("d-none");
-		pauseIcon.classList.add("d-none");
+	pauseIcon.click((e) => {
+		playIcon.removeClass("d-none");
+		pauseIcon.addClass("d-none");
 		audio.pause();
 	});
 
 	// continuesSong
-	playIcon.addEventListener("click", () => {
-		playIcon.classList.add("d-none");
-		pauseIcon.classList.remove("d-none");
+	playIcon.click((e) => {
+		playIcon.addClass("d-none");
+		pauseIcon.removeClass("d-none");
 		audio.play();
 	});
 
 	// next song
 	const btnNextSong = $(".btn-next");
-	btnNextSong.addEventListener("click", () => {
+	btnNextSong.click((e) => {
 		const indexNextSong = currentSong + 1;
 		if (indexNextSong >= dataSong.length) {
 			return;
@@ -218,7 +219,7 @@ function handleSong(dataSong) {
 
 	// prev song
 	const btnPrevSong = $(".btn-prev");
-	btnPrevSong.addEventListener("click", () => {
+	btnPrevSong.click((e) => {
 		const indexPrevSong = currentSong - 1;
 		if (indexPrevSong < 0) {
 			return;
@@ -229,7 +230,7 @@ function handleSong(dataSong) {
 	//repeat song
 
 	const btnRepeatSong = $(".btn-repeat");
-	btnRepeatSong.addEventListener("click", () => {
+	btnRepeatSong.click((e) => {
 		btnRepeatSong.classList.toggle("active");
 		if (btnRepeatSong.classList.contains("active")) {
 			isRepeat = true;
@@ -275,17 +276,16 @@ function handleSong(dataSong) {
 
 			const timeEnd = `${minutesEnd}:${secondsEnd}`;
 			const timeCur = `${minutesCur}:${secondsCur}`;
-			durationTime.innerHTML = timeEnd;
-			trackTime.innerHTML = timeCur;
+			durationTime.html(timeEnd);
+			trackTime.html(timeCur);
 			process.value = processPercent;
-			processCursor.style.width = processPercent + "%";
+			processCursor.css("width", processPercent + "%");
 		}
 	};
 
 	// rewind music
-	process.onchange = function (e) {
-		console.log("hello");
+	process.on("change", (e) => {
 		const seekTime = (audio.duration / 100) * e.target.value;
 		audio.currentTime = seekTime;
-	};
+	});
 }

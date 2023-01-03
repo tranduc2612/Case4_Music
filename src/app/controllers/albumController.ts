@@ -1,7 +1,7 @@
 import { Request, Response,NextFunction } from 'express';
 import {Album} from "../models/album";
 import albumService from "../service/albumService";
-
+import {Singer} from "../models/singer"
 
 class AlbumController {
     //[GET] /
@@ -16,9 +16,21 @@ class AlbumController {
     }
 
     create = async (req :Request, res: Response) =>{
-        let album = req.body;
-        album = await albumService.save(album);
-        return res.status(201).json(album);
+        // let album = req.body;
+        // const data = {
+        //     name: "Năm mới 1",
+        //     singer: Singer.findOne({_id:"63aa4a59144af47acb712805"})
+        // }
+
+        let data = await Singer.findOne({_id:"63aa4a59144af47acb712805"});
+
+        console.log(data);
+        
+        // console.log(data);
+        
+        
+        // const album = await albumService.save(data);
+        return res.status(201).json({});
     }
 
 }

@@ -1,0 +1,54 @@
+.header__avatar-profile{
+    border-radius:50%;
+    height: 200px;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.header__avatar-name{
+    color: white;
+}
+
+.profile__content{
+    width: 80%;
+    padding: 20px;
+    background-color:$color-primary;
+    border-radius: 10px;
+    box-shadow: $color-primary 0px 4px 12px;
+}
+
+.profile__content-title{
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.input_profile{
+    @include input_default;
+    transition: all 0.2s linear;
+    padding: 3px 10px;   
+}
+
+.input_profile:focus{
+    outline:2px solid $link-text-hover;
+}
+
+.input_profile-title{
+    color: white;
+    font-size:1.6rem;
+}
+
+.btn__update-profile{
+    @include btn_default;
+    background-color:$link-text-hover;
+    width: 30%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 320px;
+    margin-top: 30px;
+}
+
+.avatar_profile-img{
+    // height: 200px;
+    // width: 200px;
+}

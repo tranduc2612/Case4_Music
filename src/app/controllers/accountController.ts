@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
-import accountService, {ID_USER} from "../service/accountService";
-
+import accountService from "../service/accountService";
+import jwt from 'jsonwebtoken'
 class AccountController{
     register = async (req: Request, res: Response) =>{
         let account = req.body;
@@ -10,15 +10,15 @@ class AccountController{
 
     login = async (req: Request, res: Response) =>{
         let account = req.body;
-        let token = await accountService.getToken(account);
+        let data = await accountService.getToken(account);
         return res.status(200).json({
-            idUser: ID_USER,
-            token: token
+            data
         })
     }
-    findAccount = async (req: Request, res: Response) => {
-        let id = req.params.id;
-        let account = await accountService.findUser(id);
+
+    getDataUser = async (req: Request, res: Response) =>{
+        const id = req.params.id;
+        const account = await accountService.findUser(id);
         return res.status(201).json(account);
     }
 

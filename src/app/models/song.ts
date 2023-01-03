@@ -5,7 +5,7 @@ mongoose.plugin(slug);
 const songSchema = new Schema({
     name: { type: String, default: 'This is a name',maxLength: 255 },
     image: {type: String, default: 'Image'},
-    times: {type: String, default: 'Run times'},
+    singer:{type:Array , default:[]},
     path: {type: String, default: 'Path empty'},
     album : {
         type: Schema.Types.ObjectId,
