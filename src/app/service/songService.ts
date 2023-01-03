@@ -2,7 +2,7 @@ import {Song} from "../models/song";
 
 class SongService{
     findAll = async () => {
-        let songs = await Song.find();
+        let songs = await Song.find({});
         return songs;
     }
 

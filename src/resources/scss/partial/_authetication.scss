@@ -136,6 +136,8 @@ $close-width: ($button-size / 10);
 }
 
 .app__auth-phone{
+    position: relative;
+    padding-bottom: 23px;
     & label{
         font-size:2rem;
         font-weight: 500;
@@ -144,6 +146,7 @@ $close-width: ($button-size / 10);
 }
 
 .app__auth-password{
+  padding-bottom: 23px;
     & label{
         font-size:2rem;
         font-weight: 500;
@@ -203,4 +206,23 @@ input[type=number] {
   & a:hover{
     color: $pink-deep;
   }
+}
+
+#phoneInput-login.error{
+    border-color:red;
+    outline: 1px solid red;
+}
+
+#passwordInput-login.error{
+  border-color:red;
+  outline: 1px solid red;
+}
+
+.form-message{
+  display: none;
+  position: absolute;
+  color: red;
+  bottom: 0;
+  font-weight: 600;
+  font-size: 1.4rem;
 }

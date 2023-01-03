@@ -162,6 +162,10 @@
     &.active{
         background-color:$background-active;
     }
+
+    &:hover{
+        background-color:$background-active;
+    }
     
 }
 

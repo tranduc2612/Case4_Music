@@ -5,7 +5,6 @@ import express from "express";
 
 const songRouter = express.Router();
 
-//songRouter.get('/',songController.index)
 songRouter.get('/song',songController.getAll);
 songRouter.post('/song', songController.create)
 

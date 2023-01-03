@@ -2,14 +2,16 @@ import {Album} from "../models/album";
 
 
 class AlbumService{
-    findAll = async () => {
-        let albums = await Album.find();
+    async findAll() {
+        let albums = await Album.find({}).populate("singer");
         return albums;
     }
 
     save = async (album : any) =>{
         let albumCreate = await Album.create(album);
         return albumCreate;
+        // console.log(album);
+        
     }
 }
 export default new AlbumService();

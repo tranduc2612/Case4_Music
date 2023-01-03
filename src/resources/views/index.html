@@ -70,34 +70,36 @@
 					</div>
 
 					<form class="app__auth-form p-5 d-flex flex-column">
-						<div class="app__auth-phone mb-4">
-							<label for="accountInput" class="app__auth-phone-label mb-1"
+						<div class="app__auth-phone position-relative d-flex flex-column">
+							<label for="phoneInput-register" class="app__auth-phone-label mb-1"
 								>Số điện thoại</label
 							>
 							<input
 								class="app__auth-input"
-								id="accountInput"
+								id="phoneInput-register"
 								type="number"
 								name="phone"
 								value=""
 								onkeydown="return event.keyCode == 69 ? false : true"
 							/>
+							<span class="form-message phone-message-register">Số điện thoại không tồn tại !</span>
 						</div>
 
-						<div class="app__auth-password mb-4">
-							<label for="passwordInput" class="app__auth-password-label mb-1"
+						<div class="app__auth-password position-relative d-flex flex-column mb-4">
+							<label for="passwordInput-register" class="app__auth-password-label mb-1"
 								>Mật khẩu</label
 							>
 							<input
 								class="app__auth-input"
-								id="passwordInput"
+								id="passwordInput-register"
 								type="password"
 								name="password"
 								value=""
 							/>
+							<span class="form-message password-message-register">Mật khẩu không hợp lệ !</span>
 						</div>
 
-						<div class="app__auth-password mb-5">
+						<div class="app__auth-password position-relative d-flex flex-column mb-5">
 							<label
 								for="passwordInputAgain"
 								class="app__auth-password-label mb-1"
@@ -110,9 +112,10 @@
 								name="password"
 								value=""
 							/>
+							<span class="form-message password2-message-register">Mật khẩu không khớp !</span>
 						</div>
 
-						<button class="app__auth-btn align-self-center" type="">
+						<button class="app__auth-btn align-self-center register-btn" type="">
 							Đăng kí
 						</button>
 
@@ -125,7 +128,7 @@
 					</form>
 				</div>
 
-				<div class="app__auth login__form">
+				<div class="app__auth login__form d-none">
 					<div id="close__btn-auth" class="wrapper__closebtn position-absolute">
 						<a href="#" class="close-button">
 							<div class="in">
@@ -163,31 +166,31 @@
 					</div>
 
 					<form class="app__auth-form mt-2 p-5 d-flex flex-column">
-						<div class="app__auth-phone mb-5">
-							<label for="accountInput" class="app__auth-phone-label mb-2"
+						<div class="app__auth-phone position-relative d-flex flex-column mb-5">
+							<label for="phoneInput-login" class="app__auth-phone-label mb-2"
 								>Số điện thoại</label
 							>
 							<input
 								class="app__auth-input"
-								id="accountInput"
+								id="phoneInput-login"
 								type="number"
 								name="phone"
-								value=""
 								onkeydown="return event.keyCode == 69 ? false : true"
 							/>
+							<span class="form-message phone-message-login"></span>
 						</div>
 
-						<div class="app__auth-password mb-3">
-							<label for="passwordInput" class="app__auth-password-label mb-2"
+						<div class="app__auth-password position-relative d-flex flex-column mb-3">
+							<label for="passwordInput-login" class="app__auth-password-label mb-2"
 								>Mật khẩu</label
 							>
 							<input
 								class="app__auth-input"
-								id="passwordInput"
+								id="passwordInput-login"
 								type="password"
 								name="password"
-								value=""
 							/>
+							<span class="form-message password-message-login">Sai mật khẩu !</span>
 						</div>
 
 						<div class="app__auth-remember d-flex justify-center-center mb-5">
@@ -202,7 +205,7 @@
 							>
 						</div>
 
-						<button class="app__auth-btn align-self-center" type="">
+						<button class="app__auth-btn align-self-center login-btn" type="">
 							Đăng nhập
 						</button>
 
@@ -230,7 +233,7 @@
 
 					<div class="sidebar__nav">
 						<ul class="sidebar__nav-list">
-							<li class="sidebar__nav-item active">
+							<li class="sidebar__nav-item sidebar__home active">
 								<a href="#" class="sidebar__nav-link">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -249,7 +252,7 @@
 								</a>
 							</li>
 
-							<li class="sidebar__nav-item">
+							<li class="sidebar__nav-item sidebar__discover">
 								<a href="#" class="sidebar__nav-link">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -275,7 +278,7 @@
 								</a>
 							</li>
 
-							<li class="sidebar__nav-item">
+							<li class="sidebar__nav-item sidebar__zingchar">
 								<a href="#" class="sidebar__nav-link">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -722,7 +725,7 @@
 
 								<li id="header-avatar" class="header__nav-item ms-4">
 									<div class="header__nav-btn btn-setting">
-										<svg
+										<!-- <svg
 											xmlns="http://www.w3.org/2000/svg"
 											width="25"
 											height="25"
@@ -735,7 +738,9 @@
 												fill-rule="evenodd"
 												d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
 											/>
-										</svg>
+										</svg> -->
+
+										<img class="avatar__navbar" src="../../public/img/playlists/playlist1.jpg" alt=""width="40" height="40">
 									</div>
 								</li>
 							</ul>
@@ -1299,6 +1304,41 @@
 							</div>
 						</div>
 
+						<div class="app__profile d-flex flex-column align-items-center mt-5 d-none">
+							<div class="profile__header d-flex align-items-center flex-column mb-4">
+								<img class="header__avatar-profile" src="../../public/img/singer/artist1.jpg" alt="">
+								<h1 class="header__avatar-name">Tên người đăng nhập</h1>
+							</div>
+
+							<div class="profile__content mt-5">
+								<h3 class="profile__content-title">Cập nhật thông tin cá nhân</h3>
+								<form>
+									<div class="form__box d-flex flex-column mb-4">
+										<label class="input_profile-title" for="phone_profile">Số điện thoại</label>
+										<input class="input_profile" id="phone_profile" type="text" name="phone">
+									</div>
+
+									<div class="form__box d-flex flex-column mb-5">
+										<label class="input_profile-title" for="name_profile">Tên</label>
+										<input class="input_profile" id="name_profile" type="text" name="name">
+									</div>
+
+									<div class="form__box d-flex flex-column mb-5">
+										<label class="input_profile-title" for="password_profile">Mật khẩu</label>
+										<input class="input_profile" id="password_profile" type="password" name="password">
+									</div>
+
+									<div class="form__box d-flex flex-column mb-5">
+										<label class="input_profile-title" for="avatar_profile">Ảnh đại diện</label>
+										<input class="input_profile" id="avatar_profile" type="file" name="avatar">
+										<img class="avatar_profile-img" src="" alt="Anh demo">
+									</div>
+
+									<button class="btn__update-profile">Cập nhật thông tin</button>
+								</form>
+							</div>
+						</div>
+
 						<div class="app__container-zingchart" style="display: none"></div>
 					</div>
 				</div>
@@ -1493,7 +1533,10 @@
 				},
 			});
 		</script>
-		<script src="../js/handleSong.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script src="../js/handleEvent.js"></script>
+		<script src="../js/handleSong.js"></script>
+		<script src="../js/handleAccount.js"></script>
+		<script src="../js/index.js"></script>
 	</body>
 </html>

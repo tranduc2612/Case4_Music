@@ -1,13 +1,8 @@
-
-
-// @ts-ignore
-import express from "express";
+import {Router} from "express";
 import albumController from "../app/controllers/albumController";
 
-const albumRouter = express.Router();
+const albumRouter = Router();
+albumRouter.post('/create',albumController.create);
+albumRouter.get('/get',albumController.getAll);
 
-// albumRouter.get('/',albumController.index)
-albumRouter.get('/album',albumController.getAll);
-albumRouter.post('/album', albumController.create)
-
-export default albumRouter;
+export default albumRouter

@@ -1,15 +1,17 @@
 let currentSong;
 let isPlay = false;
 let isRepeat = false;
-
 function getListSong() {
 	return $.ajax({
 		type: "GET",
-		url: "http://localhost:3000/song-demo",
+		url: `${URL_BASE}/list-songs/song`,
 		headers: {
 			"Content-Type": "application/json",
+			Authorization:
+				"Bearer " + JSON.parse(localStorage.getItem("ACCESS_TOKEN")),
 		},
 		success: (songList) => {
+			console.log(songList);
 			let html = "";
 			songList.forEach((song, index) => {
 				let authors = "";
@@ -200,8 +202,8 @@ function handleSong(dataSong) {
 
 	// continuesSong
 	playIcon.click((e) => {
-		playIcon.classList.add("d-none");
-		pauseIcon.classList.remove("d-none");
+		playIcon.addClass("d-none");
+		pauseIcon.removeClass("d-none");
 		audio.play();
 	});
 
@@ -283,7 +285,6 @@ function handleSong(dataSong) {
 
 	// rewind music
 	process.on("change", (e) => {
-		console.log("hello");
 		const seekTime = (audio.duration / 100) * e.target.value;
 		audio.currentTime = seekTime;
 	});

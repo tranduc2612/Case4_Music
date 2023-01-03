@@ -1,7 +1,7 @@
 // @ts-ignore
 import jwt from 'jsonwebtoken'
 
-export const SECRET_KEY = 'secret';
+export const SECRET_KEY = '123456';
 export const auth = (req : any,res:any, next:any)=>{
     let authorization = req.headers.authorization;
     if(authorization){
