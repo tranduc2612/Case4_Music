@@ -1,4 +1,4 @@
-const URL_BASE = "http://localhost:3000";
+const URL_BASE = "https://music-player-l0h2.onrender.com";
 let tokenLocal = localStorage.getItem("ACCESS_TOKEN");
 let avatarLocal = JSON.parse(localStorage.getItem("AVATAR"));
 let nameLocal = JSON.parse(localStorage.getItem("NAME"));
