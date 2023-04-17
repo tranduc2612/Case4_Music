@@ -10,7 +10,6 @@ class AlbumService{
     save = async (album : any) =>{
         let albumCreate = await Album.create(album);
         return albumCreate;
-        // console.log(album);
         
     }
 }

@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "node-sass -w src/resources/scss -o src/public/css",
     "start": "nodemon server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/index.js\""
   },
   "repository": {
     "type": "git",
